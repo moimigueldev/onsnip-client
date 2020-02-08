@@ -1,0 +1,42 @@
+.welcome-text {
+    margin-top: 30%;
+}
+
+button {
+    font-size: 26px;
+}
+
+button:hover {
+    // background-color: red;
+    background-color: #c73e1d;
+    background-image: linear-gradient(315deg, #c73e1d 0%, #a23b72 37%, #2e86ab 100%);
+}
+
+
+h1 {
+    font-size: 4.5rem;
+}
+
+
+//======================================================================
+//                        MEDIA QUERY
+//======================================================================
+
+
+//IPHONE X
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+
+    .welcome-text {
+        margin-top: 50%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+}
+
