@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class SpotifyService {
 
   constructor() { }
+
+  ngOnInit() {
+    console.log('in the service')
+  }
 }
