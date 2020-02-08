@@ -16,7 +16,7 @@ export class RedirectComponent implements OnInit {
     private styleService: StyleService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     //Adds the bg class for this components
     this.styleService.addRedirectPageClass();
 
@@ -24,7 +24,7 @@ export class RedirectComponent implements OnInit {
     this.parseHashUrl();
   }
 
-  parseHashUrl() {
+  parseHashUrl(): void {
     let hashString = window.location.hash.toString()
     const start = hashString.indexOf('=') + 1;
     const end = hashString.indexOf('&');
@@ -34,7 +34,7 @@ export class RedirectComponent implements OnInit {
   }
 
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.styleService.clearClassList()
 
   }

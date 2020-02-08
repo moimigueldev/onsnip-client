@@ -23,7 +23,7 @@ export class WelcomeComponent implements OnInit {
     private styleService: StyleService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     //adds Welcome class to body
     this.styleService.addWelcomePageClass();
 
@@ -34,7 +34,7 @@ export class WelcomeComponent implements OnInit {
     this.spotifyService.fetchUser();
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.styleService.clearClassList()
   }
 

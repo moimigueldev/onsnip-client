@@ -15,7 +15,7 @@ export class RedirectGuard implements CanActivate {
 
     // will not parse hash if no hash url is available
     const hashString = window.location.hash.toString()
-    return hashString.length > 2 ? true : this.router.navigate(['/'])
+    return hashString.length ? true : this.router.navigate(['/'])
 
   }
 

@@ -13,7 +13,9 @@ export class SpotifyService {
 
   //SUBSCRIPTIONS
   fetchUserSubscription: Subscription;
-  logoutObserabel: Subscription;
+  logoutUserSubscription: Subscription;
+  loginUserSubscription: Subscription;
+  getSavedUserSubscription: Subscription;
 
   topArtist = new Subject();
   genres = new Subject();
@@ -24,11 +26,11 @@ export class SpotifyService {
     private cookieService: CookieService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
 
 
-  fetchUser() {
+  fetchUser(): void {
     this.fetchUserSubscription = this.http.get(urlRoutes['authLogin'])
       .subscribe(data => {
         window.location.href = data['url']
@@ -37,12 +39,8 @@ export class SpotifyService {
 
 
 
-
-
-
-  loginUser(token) {
-    console.log('login in user')
-    this.http.post(urlRoutes['authLoginUser'], { token }).subscribe(data => {
+  loginUser(token): void {
+    this.loginUserSubscription = this.http.post(urlRoutes['authLoginUser'], { token }).subscribe(data => {
       this.cookieService.set('spotify-user', JSON.stringify(data), 24 * 60 * 60 * 1000)
       this.router.navigate(['/dashboard'])
     })
@@ -51,35 +49,34 @@ export class SpotifyService {
 
 
   // THIS ONE
-  getSavedUser() {
+  getSavedUser(): void {
     let cookie = this.cookieService.get('spotify-user')
 
-    if (cookie.length) {
-      cookie = JSON.parse(cookie)
-      this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe(data => {
-        console.log("back with the datas", data)
-        this.topArtist.next(data['filteredData'].mostListenedArtist)
-        this.genres.next(data['analytics'].topGenres)
-      })
-    } else {
-      this.router.navigate(['/'])
-    }
+
+    cookie = JSON.parse(cookie)
+    this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe(data => {
+      this.topArtist.next(data['filteredData'].mostListenedArtist)
+      this.genres.next(data['analytics'].topGenres)
+    })
+
 
   }
 
 
-  logoutUser() {
-
-    this.http.get(urlRoutes['authLogout'], { responseType: 'text' }).subscribe(data => {
-
+  logoutUser(): void {
+    this.logoutUserSubscription = this.http.get(urlRoutes['authLogout'], { responseType: 'text' }).subscribe(data => {
       this.cookieService.delete('spotify-user')
       this.router.navigate(['/'])
     })
   }
 
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.fetchUserSubscription ? this.fetchUserSubscription.unsubscribe() : null;
+    this.loginUserSubscription ? this.loginUserSubscription.unsubscribe() : null;
+    this.getSavedUserSubscription ? this.getSavedUserSubscription.unsubscribe() : null;
+    this.logoutUserSubscription ? this.logoutUserSubscription.unsubscribe() : null;
+
   }
 
 
