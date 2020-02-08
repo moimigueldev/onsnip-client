@@ -1,0 +1,35 @@
+
+
+.loader {
+    margin-top: 30%;
+}
+
+.spinner-grow {
+    width: 4rem;
+    height: 4rem;
+}
+
+//======================================================================
+//                        MEDIA QUERY
+//======================================================================
+
+
+//IPHONE X
+@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 3)
+  and (orientation: portrait) { 
+
+    .loader {
+        margin-top: 74%;
+    }
+
+    .spinner-grow {
+        width: 2rem;
+        height: 2rem;
+    }
+
+   
+
+}

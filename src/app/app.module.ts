@@ -6,8 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SpotifyService } from './services/spotify.service';
 import { CoreModule } from './core/core.module';
+
+import { SpotifyService } from './services/spotify/spotify.service';
+import { StyleService } from './services/style/style.service';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -21,7 +24,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     CoreModule
   ],
-  providers: [SpotifyService],
+  providers: [SpotifyService, StyleService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
-import { SpotifyService } from 'src/app/services/spotify.service';
+import { SpotifyService } from 'src/app/services/spotify/spotify.service';
+import { StyleService } from 'src/app/services/style/style.service';
 
 @Component({
   selector: 'app-welcome',
@@ -18,7 +19,8 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 export class WelcomeComponent implements OnInit {
 
   constructor(
-    private spotifyService: SpotifyService
+    private spotifyService: SpotifyService,
+    private styleService: StyleService
   ) { }
 
   ngOnInit() {
@@ -28,17 +30,11 @@ export class WelcomeComponent implements OnInit {
 
 
   onLogin(): void {
-    console.log('hello')
-    // this.userService.getUserData();
+    this.spotifyService.getUserData();
   }
 
   ngOnDestroy() {
-
-    //Removes BG image class
-    let classList = document.body.classList;
-    while (classList.length > 0) {
-      classList.remove(classList.item(0));
-    }
+    this.styleService.clearClassList()
   }
 
 }
