@@ -24,6 +24,7 @@ export class SpotifyService {
   ngOnInit() {
   }
 
+  // CHECKING IF USER COOKIE EXIST
   getUserData() {
     const doesCookieExist = this.cookieService.check('spotify-user')
     if (doesCookieExist) {
