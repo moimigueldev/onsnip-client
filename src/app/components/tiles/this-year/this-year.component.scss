@@ -1,0 +1,27 @@
+.card {
+    width: 238px!important;
+    height: 200px!important;
+    overflow: hidden;
+    background: rgb(185, 52, 52);  /* fallback for old browsers */
+// background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+// background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+// -webkit-box-shadow: 0px 0px 38px -4px rgba(148,5,5,1);
+// -moz-box-shadow: 0px 0px 38px -4px rgba(148,5,5,1);
+// box-shadow: 0px 0px 38px -4px rgba(148,5,5,1);
+
+// -webkit-box-shadow: inset 0px 0px 14px -4px #e807e8;
+// -moz-box-shadow: inset 0px 0px 14px -4px #e807e8;
+// box-shadow: inset 0px 0px 14px -4px #e807e8;
+
+}
+
+.card:hover {
+    -webkit-box-shadow: 0px 0px 38px -4px rgb(185, 52, 52);
+    -moz-box-shadow: 0px 0px 38px -4px rgb(185, 52, 52);
+    box-shadow: 0px 0px 38px -4px rgb(185, 52, 52);
+}
+
+p {
+    font-size: 45px;
+}

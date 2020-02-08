@@ -23,4 +23,8 @@ export class StyleService {
     document.body.classList.add('welcome-bg-image');
   }
 
+  addDashboardPageClass(): void {
+    document.body.classList.add('dashboard-bg');
+  }
+
 }

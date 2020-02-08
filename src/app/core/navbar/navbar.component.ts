@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StyleService } from 'src/app/services/style/style.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private styleService: StyleService
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.styleService.addDashboardPageClass();
   }
 
+
+  logout(): void {
+    console.log('login out')
+  }
+
+  ngOnDestroy(): void {
+    this.styleService.clearClassList();
+  }
 }

@@ -13,7 +13,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.spotifyService.getSavedUser();
+    // this.spotifyService.getSavedUser();
   }
 
 

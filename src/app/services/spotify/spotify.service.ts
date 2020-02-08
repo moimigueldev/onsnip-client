@@ -4,6 +4,7 @@ import { Subscription, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { urlRoutes } from '../../../assets/keys';
+import { map } from 'rxjs/operators'
 
 
 @Injectable({
@@ -31,10 +32,12 @@ export class SpotifyService {
   }
 
 
+
   fetchUser(): void {
     this.fetchUserSubscription = this.http.get(urlRoutes['authLogin'])
       .subscribe(data => {
-        window.location.href = data['url']
+        data['url'] ? window.location.href = data['url'] : console.log('error fetching user', data)
+
       })
   }
 
