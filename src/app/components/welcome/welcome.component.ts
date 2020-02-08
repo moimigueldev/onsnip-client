@@ -24,13 +24,14 @@ export class WelcomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    document.body.classList.add('welcome-bg-image');
+    //adds Welcome class to body
+    this.styleService.addWelcomePageClass();
 
   }
 
 
   onLogin(): void {
-    this.spotifyService.getUserData();
+    this.spotifyService.fetchUser();
   }
 
   ngOnDestroy() {

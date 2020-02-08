@@ -11,7 +11,10 @@ import { urlRoutes } from '../../../assets/keys';
 })
 export class SpotifyService {
 
+  //SUBSCRIPTIONS
+  fetchUserSubscription: Subscription;
   logoutObserabel: Subscription;
+
   topArtist = new Subject();
   genres = new Subject();
 
@@ -24,17 +27,12 @@ export class SpotifyService {
   ngOnInit() {
   }
 
-  // CHECKING IF USER COOKIE EXIST
-  getUserData() {
-    const doesCookieExist = this.cookieService.check('spotify-user')
-    if (doesCookieExist) {
-      this.router.navigate(['/dashboard'])
-    } else {
-      this.http.get(urlRoutes['authLogin'])
-        .subscribe(data => {
-          window.location.href = data['url']
-        })
-    }
+
+  fetchUser() {
+    this.fetchUserSubscription = this.http.get(urlRoutes['authLogin'])
+      .subscribe(data => {
+        window.location.href = data['url']
+      })
   }
 
 
@@ -43,6 +41,7 @@ export class SpotifyService {
 
 
   loginUser(token) {
+    console.log('login in user')
     this.http.post(urlRoutes['authLoginUser'], { token }).subscribe(data => {
       this.cookieService.set('spotify-user', JSON.stringify(data), 24 * 60 * 60 * 1000)
       this.router.navigate(['/dashboard'])
@@ -76,8 +75,11 @@ export class SpotifyService {
       this.cookieService.delete('spotify-user')
       this.router.navigate(['/'])
     })
+  }
 
 
+  ngOnDestroy() {
+    this.fetchUserSubscription ? this.fetchUserSubscription.unsubscribe() : null;
   }
 
 

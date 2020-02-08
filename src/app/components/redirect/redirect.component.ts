@@ -18,7 +18,7 @@ export class RedirectComponent implements OnInit {
 
   ngOnInit() {
     //Adds the bg class for this components
-    document.body.classList.add('redirect-page');
+    this.styleService.addRedirectPageClass();
 
     // PARSES HASHSTRING FROM URL AND SENDS HASH TO SERVER
     this.parseHashUrl();
