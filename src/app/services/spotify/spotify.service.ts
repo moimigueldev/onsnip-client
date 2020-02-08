@@ -17,6 +17,7 @@ export class SpotifyService {
   loginUserSubscription: Subscription;
   getSavedUserSubscription: Subscription;
 
+  //Subjects
   topArtist = new Subject();
   genres = new Subject();
 
@@ -55,8 +56,10 @@ export class SpotifyService {
 
     cookie = JSON.parse(cookie)
     this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe(data => {
-      this.topArtist.next(data['filteredData'].mostListenedArtist)
-      this.genres.next(data['analytics'].topGenres)
+
+      console.log('this is the data', data)
+      // this.topArtist.next(data['filteredData'].mostListenedArtist)
+      // this.genres.next(data['analytics'].topGenres)
     })
 
 
