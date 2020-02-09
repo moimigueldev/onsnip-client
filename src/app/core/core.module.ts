@@ -6,6 +6,8 @@ import { WelcomeComponent } from '../components/welcome/welcome.component';
 import { RedirectComponent } from '../components/redirect/redirect.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
 import { TilesModule } from '../components/tiles/tiles.module';
+import { BarGraphComponent } from '../components/bar-graph/bar-graph.component';
+import { ShareModule } from '../share/share.module';
 
 
 
@@ -15,11 +17,13 @@ import { TilesModule } from '../components/tiles/tiles.module';
     WelcomeComponent,
     RedirectComponent,
     DashboardComponent,
+    BarGraphComponent
   ],
   imports: [
     CommonModule,
     ListModule,
-    TilesModule
+    TilesModule,
+    ShareModule
   ]
 })
 export class CoreModule { }

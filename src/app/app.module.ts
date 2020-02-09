@@ -13,6 +13,7 @@ import { StyleService } from './services/style/style.service';
 import { CookieService } from 'ngx-cookie-service';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
