@@ -41,6 +41,7 @@ export class BarGraphComponent implements OnInit {
     //   }
     // }
   };
+
   public barChartLabels: Label[];
   public barChartType: ChartType = 'horizontalBar';
   public barChartLegend = false;
@@ -65,11 +66,16 @@ export class BarGraphComponent implements OnInit {
     const genresTotal = genres.map(el => el.total)
 
 
+
+
+
     this.barChartData = [{
       data: genresTotal,
       pointBackgroundColor: this.colorPallet,
-      backgroundColor: this.colorPallet,
+      backgroundColor: 'rgb(46,20,132)',
       pointRadius: 7,
+      // borderWidth: 3,
+      barPercentage: 0.4,
       fill: false
     }]
     this.barChartLabels = genresName;

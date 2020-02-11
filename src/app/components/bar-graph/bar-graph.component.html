@@ -3,8 +3,13 @@
 </canvas> -->
 <!-- <canvas></canvas> -->
 
+<div class="d-flex flex-row bd-highlight mb-3 ml-3 mt-3">
+    <!-- <div class="p-2 bd-highlight">Flex item 1</div> -->
+    <h3>Top 10 Genres</h3>
+</div>
+
 <div class="card" *ngIf='barChartData.length >= 1'>
-    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+    <canvas id='barChart' baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
         [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
     </canvas>
 
