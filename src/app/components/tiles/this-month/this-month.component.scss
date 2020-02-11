@@ -1,26 +1,4 @@
 .card {
-    
-    overflow: hidden;
-    background: rgb(85, 85, 158);  /* fallback for old browsers */
-// background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-// background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-// -webkit-box-shadow: 0px 0px 38px -4px rgba(189,0,123,1);
-// -moz-box-shadow: 0px 0px 38px -4px rgba(189,0,123,1);
-// box-shadow: 0px 0px 38px -4px rgba(189,0,123,1);
-
-// -webkit-box-shadow: inset 0px 0px 14px -4px #e807e8;
-// -moz-box-shadow: inset 0px 0px 14px -4px #e807e8;
-// box-shadow: inset 0px 0px 14px -4px #e807e8;
-
+    background: #ffbf45;  /* fallback for old browsers */
 }
 
-.card:hover {
-    -webkit-box-shadow: 0px 0px 38px -4px rgb(85, 85, 158);
-    -moz-box-shadow: 0px 0px 38px -4px rgb(85, 85, 158);
-    box-shadow: 0px 0px 38px -4px rgb(85, 85, 158);
-}
-
-p {
-    font-size: 45px;
-}
