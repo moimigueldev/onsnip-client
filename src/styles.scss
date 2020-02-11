@@ -1,6 +1,10 @@
 
 
 
+
+//===================================================
+//            INDIVIDUAL COMPONENTS BACKGROUND 
+//===================================================
 .dashboard-bg {
   background-color:rgb(8, 37, 67);
   color: white;;
@@ -27,15 +31,55 @@
     background-size: cover;
     -o-background-size: cover;
   } 
+
   
-.card.tile {
- 
-    width: 238px!important;
-    height: 200px!important;
-    overflow: hidden;
+// .dropdown-menu.show {
+//   background-color: 'red' !important
+// }
+
+//===================================================
+//            GLOBAL CARD TILES 
+//===================================================
 
 
+.card-tiles {
+  overflow: hidden;
+    // background: rgb(52, 185, 123);  /* fallback for old browsers */
+    
+    border: 1px solid yellow;
 
+    width: inherit;
+    height: 120px;
+
+    // margin-top:  ;
 }
 
- 
+.card-tile-text {
+  font-size: 18px
+}
+
+
+
+
+
+//===================================================
+//            MEDIA QUERIES 
+//===================================================
+  
+// IPHONE 
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : portrait)
+ {
+//===================================================
+//            GLOBAL CARD TILES 
+//===================================================
+
+  .card-tiles {
+    margin-top: 10px  ;
+  }
+}
+
+

@@ -1,25 +1,17 @@
 .card {
-    overflow: hidden;
-    background: rgb(52, 185, 123);  /* fallback for old browsers */
-// background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
-// background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-// -webkit-box-shadow: 0px 0px 38px -4px rgba(2,150,138,1);
-// -moz-box-shadow: 0px 0px 38px -4px rgba(2,150,138,1);
-// box-shadow: 0px 0px 38px -4px rgba(2,150,138,1);
-
-// -webkit-box-shadow: inset 0px 0px 14px -4px #e807e8;
-// -moz-box-shadow: inset 0px 0px 14px -4px #e807e8;
-// box-shadow: inset 0px 0px 14px -4px #e807e8;
-
+    background: rgb(0, 0, 0);  /* fallback for old browsers */
 }
 
-.card:hover {
-    -webkit-box-shadow: 0px 0px 38px -4px rgb(52, 185, 123);
-    -moz-box-shadow: 0px 0px 38px -4px rgb(52, 185, 123);
-    box-shadow: 0px 0px 38px -4px rgb(52, 185, 123);
-}
 
-p {
-    font-size: 45px;
-}
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : portrait) {
+     /* STYLES GO HERE */ 
+
+     .card {
+        margin-top: 10px  ;
+    }
+    }
+
