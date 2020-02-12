@@ -4,7 +4,38 @@
     background-color: #041d39;
 }
 
+
 .list-flex-row {
     // border: 2px solid blue;  
-    height: 50%;
+    height: 45%;
+    
+}
+
+.list-flex-row-2 {
+    // border: 2px solid blue;  
+    height: 40%;
+    
+}
+
+// HIDES THE SCROLL BAR
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+// HIDES THE SCROLL BAR
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+.list {
+    border: 10px solid red;
+    overflow: scroll;
+}
+
+.components {
+    height: 220px;
+    min-height: 218px;
+    max-height: 2018px;
 }
