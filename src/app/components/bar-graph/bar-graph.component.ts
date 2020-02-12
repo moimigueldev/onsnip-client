@@ -29,26 +29,26 @@ export class BarGraphComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
-    scales: {
-      yAxes: [{
-        display: true,
-        ticks: {
+    // scales: {
+    //   yAxes: [{
+    //     display: true,
+    //     ticks: {
 
-          fontSize: 10,
-          lineHeight: 0
-        }
-      }]
-    },
+    //       fontSize: 10,
+    //       lineHeight: 0
+    //     }
+    //   }]
+    // },
 
-    tooltips: {
-      callbacks: {
-        label: (tooltipItem, data) => {
-          console.log('toool', data)
-          return ''
-        }
-      },
-      titleFontSize: 12
-    }
+    // tooltips: {
+    //   callbacks: {
+    //     label: (tooltipItem, data) => {
+
+    //       return ''
+    //     }
+    //   },
+    //   titleFontSize: 12
+    // }
 
     // tooltips: {
     //   callbacks: {
