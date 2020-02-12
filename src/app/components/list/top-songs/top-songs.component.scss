@@ -1,0 +1,45 @@
+.playlist {
+    list-style: none;
+    padding-left: 0;;
+}
+
+.card  {
+    overflow-y: scroll;
+}
+
+#artist-image {
+    height: 61px;;
+}
+
+// p {
+//     font-size: 13px;
+//     font-weight: 100;
+//     font-family: serif;
+//     color: #0083d0
+// }
+
+.song-title {
+    font-size: 13px;
+    font-weight: 100;
+}
+
+
+.duration {
+    font-size: 13px;
+    font-weight: 100;
+    font-family: serif;
+    color: #0083d0
+}
+
+
+// HIDES THE SCROLL BAR
+::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+
+// HIDES THE SCROLL BAR
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
