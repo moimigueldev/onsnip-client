@@ -29,17 +29,40 @@ export class BarGraphComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
+    scales: {
+      yAxes: [{
+        display: true,
+        ticks: {
+
+          fontSize: 10,
+          lineHeight: 0
+        }
+      }]
+    },
+
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          console.log('toool', data)
+          return ''
+        }
+      },
+      titleFontSize: 12
+    }
+
     // tooltips: {
     //   callbacks: {
     //     label: (tooltipItem, data) => {
 
-
-    //       return tooltipItem.xLabel = this.artistData[tooltipItem.index].artist
+    //       console.log(tooltipItem)
+    //       return data
+    //       // return tooltipItem.xLabel = this.artistData[tooltipItem.index].artist
 
 
     //     }
     //   }
     // }
+
   };
 
   public barChartLabels: Label[];
@@ -76,6 +99,7 @@ export class BarGraphComponent implements OnInit {
       pointRadius: 7,
       // borderWidth: 3,
       barPercentage: 0.4,
+
       fill: false
     }]
     this.barChartLabels = genresName;
