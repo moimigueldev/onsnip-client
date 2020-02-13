@@ -1,14 +1,11 @@
-.playlist {
-    list-style: none;
-    padding-left: 0;;
-}
-
-.card  {
-    overflow-y: scroll;
-}
 
 #artist-image {
-    height: 61px;;
+    height:61px;;
+    // width: 113%;
+}
+
+.card {
+    background-color: transparent;
 }
 
 p {
@@ -17,15 +14,34 @@ p {
     // font-family: serif;
 }
 
-
-// HIDES THE SCROLL BAR
-::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+.list-components  {
+    // border: 1px solid red;
+    width: 100%;
 }
 
-// HIDES THE SCROLL BAR
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
+.row{
+    max-height: 113px;
+}
+
+.col-style {
+    // border: 1px solid blue;
+    max-height: 113px;
+}
+
+#song-title {
+    // border: 1px solid orange;
+    
+    .followers {
+        font-size: 10px;
+        color: #2E1484 !important;
+    }
+}
+
+
+.row:hover {
+    background-color: #001329
+  }
+
+.row {
+    overflow-x: hidden;
 }
