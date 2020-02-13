@@ -5,37 +5,31 @@
 }
 
 
-.list-flex-row {
-    // border: 2px solid blue;  
-    height: 45%;
-    
+#list-section {
+    border: 1px solid red;
+
+    // .col-md-6  {
+    //     background-color: #041d39;
+    //     overflow: scroll
+    // }
+
+    .row {
+        border: 2px solid blue;
+        min-height: 50%;
+        max-height: 50% !important;
+        // overflow: scroll;
+        
+
+  
+        
+    }
 }
 
-.list-flex-row-2 {
-    // border: 2px solid blue;  
-    height: 40%;
-    
-}
 
-// HIDES THE SCROLL BAR
-::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
-}
-
-// HIDES THE SCROLL BAR
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-    background: #FF0000;
-}
-
-.list {
-    border: 10px solid red;
+.list-columns {
+    // color: yellow;
+    max-height: 220px   ;
     overflow: scroll;
+    padding: 0;
 }
 
-.components {
-    height: 220px;
-    min-height: 218px;
-    max-height: 2018px;
-}
