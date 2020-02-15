@@ -20,9 +20,9 @@ export class LastYearComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tracksSubscription = this.spotifyService.tracksSavedLastYear.subscribe((track: number) => {
-      this.tracks = track
-    })
+    // this.tracksSubscription = this.spotifyService.tracksSavedLastYear.subscribe((track: number) => {
+    //   this.tracks = track
+    // })
 
     // console.log('trackss', this.bankName)
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 import { TracksBundle } from 'src/app/share/interfaces/tracks';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
 
   //====================================
@@ -39,7 +39,9 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    console.log('destroing', this.tracksBundleSubscription)
     this.tracksBundleSubscription ? this.tracksBundleSubscription.unsubscribe() : null;
+    console.log('destroing', this.tracksBundleSubscription)
   }
 
 } 

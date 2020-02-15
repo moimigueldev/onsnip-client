@@ -2,8 +2,8 @@
 <button (click)="logout()">Logout</button> -->
 <app-navbar></app-navbar>
 
-<div class="container  mt-3 mb-0">
-    <div class="row no-gutters  " *ngIf=tracksBundleResponse>
+<div class="container  mt-3 mb-0" *ngIf=tracksBundleResponse>
+    <div class="row no-gutters  ">
         <div class="col-md-4  p-0tiles-row ">
             <!-- <app-last-year ></app-last-year> -->
 
@@ -12,21 +12,33 @@
             </app-general-tracks>
         </div>
         <div class="col-md-4  p-0tiles-row ">
-            <app-this-year></app-this-year>
+            <!-- <app-this-year></app-this-year> -->
+            <app-general-tracks tracks={{tracksBundleResponse.tracksSavedThisYear}} name="Songs Added This Year"
+                bgColor='#7965f1'>
+            </app-general-tracks>
         </div>
         <div class="col-md-4  p-0tiles-row ">
-            <app-this-month></app-this-month>
+            <!-- <app-this-month></app-this-month> -->
+            <app-general-tracks tracks={{tracksBundleResponse.tracksSavedThisMonth}} name="Songs Added This Month"
+                bgColor='#ffbf45'>
+            </app-general-tracks>
         </div>
 
     </div>
 </div>
-<div class="container  mt-2">
+<div class="container  mt-2" *ngIf=tracksBundleResponse>
     <div class="row no-gutters  mt-0">
         <div class="col-md-4  p-0tiles-row ">
-            <app-genre></app-genre>
+            <!-- <app-genre></app-genre> -->
+            <app-general-tracks tracks={{tracksBundleResponse.favoriteGenre.name.toUpperCase()}} name="Favorite Genre"
+                bgColor='#58b5fc'>
+            </app-general-tracks>
         </div>
         <div class="col-md-4  p-0tiles-row ">
-            <app-total-songs></app-total-songs>
+            <!-- <app-total-songs></app-total-songs> -->
+            <app-general-tracks tracks={{tracksBundleResponse.totalTracks}} name="Total Songs In Queue"
+                bgColor='#61d861'>
+            </app-general-tracks>
         </div>
         <div class="col-md-4  p-0tiles-row ">
             <app-artist></app-artist>

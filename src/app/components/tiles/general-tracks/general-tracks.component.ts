@@ -22,11 +22,6 @@ export class GeneralTracksComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.tracksSubscription = this.spotifyService.tracksSavedLastYear.subscribe((track: number) => {
-      this.tracks = track
-    })
-
-    console.log('trackss', this.tracks, this.name, this.bgColor)
   }
 
 

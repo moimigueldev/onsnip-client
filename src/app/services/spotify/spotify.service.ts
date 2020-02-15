@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit, OnDestroy } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subscription, Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { TracksBundle } from 'src/app/share/interfaces/tracks';
 @Injectable({
   providedIn: 'root'
 })
-export class SpotifyService {
+export class SpotifyService implements OnDestroy, OnInit {
 
   //SUBSCRIPTIONS
   fetchUserSubscription: Subscription;
@@ -22,10 +22,6 @@ export class SpotifyService {
   //Subjects
   topArtist = new Subject();
   genres = new Subject<GenreList[]>();
-  tracksSavedThisMonth = new Subject<number>();
-  tracksSavedthisYear = new Subject<number>();
-  tracksSavedLastYear = new Subject<number>();
-  totalSongs = new Subject<number>();
   tracksBundle = new Subject<TracksBundle>();
 
   constructor(
@@ -64,30 +60,25 @@ export class SpotifyService {
 
     cookie = JSON.parse(cookie)
     this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe(data => {
-      // console.log('data', data['filteredData'].tracksSavedlastYear)
-      // this.topArtist.next(data['filteredData'].mostListenedArtist)
+
 
       const tracksBundle: TracksBundle = {
         tracksSavedLastYear: data['filteredData'].tracksSavedlastYear,
         tracksSavedThisYear: data['filteredData'].tracksSavedThisYear,
         tracksSavedThisMonth: data['filteredData'].tracksSavedThisMonth,
-        TotalTracks: data['analytics'].totalSongs,
+        totalTracks: data['analytics'].totalSongs,
+        favoriteGenre: data['analytics'].topGenres[0]
       }
 
       this.tracksBundle.next(tracksBundle)
 
-
-
-      this.tracksSavedLastYear.next(data['filteredData'].tracksSavedlastYear)
-
-      this.tracksSavedThisMonth.next(data['filteredData'].tracksSavedThisMonth)
-      this.tracksSavedthisYear.next(data['filteredData'].tracksSavedthisYear)
-      this.totalSongs.next(data['analytics'].totalSongs)
       this.genres.next(data['analytics'].topGenres)
     })
 
 
   }
+
+  // bundleUpTracks()
 
 
   logoutUser(): void {
