@@ -5,7 +5,8 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { urlRoutes } from '../../../assets/keys';
 import { GenreList } from '../../share/interfaces/genreList'
-import { TracksBundle } from 'src/app/share/interfaces/tracks';
+import { TracksBundle, FavoriteTrack } from 'src/app/share/interfaces/tracks';
+
 
 
 @Injectable({
@@ -20,9 +21,10 @@ export class SpotifyService implements OnDestroy, OnInit {
   getSavedUserSubscription: Subscription;
 
   //Subjects
-  topArtist = new Subject();
+  favoriteSong = new Subject();
   genres = new Subject<GenreList[]>();
   tracksBundle = new Subject<TracksBundle>();
+
 
   constructor(
     private http: HttpClient,
@@ -59,26 +61,45 @@ export class SpotifyService implements OnDestroy, OnInit {
     let cookie = this.cookieService.get('spotify-user')
 
     cookie = JSON.parse(cookie)
-    this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe(data => {
+    this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe((data: any) => {
+
+      // console.log('data', data['analytics'].topTracks[0])
 
 
-      const tracksBundle: TracksBundle = {
-        tracksSavedLastYear: data['filteredData'].tracksSavedlastYear,
-        tracksSavedThisYear: data['filteredData'].tracksSavedThisYear,
-        tracksSavedThisMonth: data['filteredData'].tracksSavedThisMonth,
-        totalTracks: data['analytics'].totalSongs,
-        favoriteGenre: data['analytics'].topGenres[0]
-      }
 
-      this.tracksBundle.next(tracksBundle)
 
+      // this.favoriteSong.next(this.bundleFavoriteTrack(data))
+      this.favoriteSong.next(this.bundleFavoriteTrack(data))
+      this.tracksBundle.next(this.bundleUpTracks(data))
       this.genres.next(data['analytics'].topGenres)
     })
 
 
   }
 
-  // bundleUpTracks()
+  private bundleFavoriteTrack(track: any): FavoriteTrack {
+
+    const song: FavoriteTrack = {
+      name: track['analytics'].topTracks[0].name,
+      image: track['analytics'].topTracks[0].album.images[track['analytics'].topTracks[0].album.images.length - 1].url,
+      album: track['analytics'].topTracks[0].album.name
+    }
+
+    return song
+  }
+
+
+  private bundleUpTracks(data: any): TracksBundle {
+    const tracksBundle: TracksBundle = {
+      tracksSavedLastYear: data['filteredData'].tracksSavedlastYear,
+      tracksSavedThisYear: data['filteredData'].tracksSavedThisYear,
+      tracksSavedThisMonth: data['filteredData'].tracksSavedThisMonth,
+      totalTracks: data['analytics'].totalSongs,
+      favoriteGenre: data['analytics'].topGenres[0]
+    }
+
+    return tracksBundle;
+  }
 
 
   logoutUser(): void {

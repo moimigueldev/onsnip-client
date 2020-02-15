@@ -7,3 +7,9 @@ export interface TracksBundle {
     totalTracks: number;
     favoriteGenre: GenreList
 }
+
+export interface FavoriteTrack {
+    name: string;
+    image: string;
+    album: string;
+}

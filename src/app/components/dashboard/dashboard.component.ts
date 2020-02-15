@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify/spotify.service';
-import { TracksBundle } from 'src/app/share/interfaces/tracks';
+import { TracksBundle, FavoriteTrack } from 'src/app/share/interfaces/tracks';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,7 +16,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   //====================================
 
   tracksBundleSubscription: Subscription;
+
+
+
+  //====================================
+  //              GLOBALS
+  //====================================
   tracksBundleResponse: TracksBundle;
+
 
 
   constructor(
@@ -27,10 +34,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.spotifyService.getSavedUser();
 
     this.tracksBundleSubscription = this.spotifyService.tracksBundle.subscribe((tracks: TracksBundle) => {
-      console.log('tracks', tracks)
+      // console.log('tracks', tracks)
       this.tracksBundleResponse = tracks;
+    });
 
-    })
+
   }
 
 
@@ -39,9 +47,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('destroing', this.tracksBundleSubscription)
     this.tracksBundleSubscription ? this.tracksBundleSubscription.unsubscribe() : null;
-    console.log('destroing', this.tracksBundleSubscription)
   }
 
 } 

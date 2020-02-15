@@ -1,11 +1,11 @@
-<div class="card text-center  card-tiles ">
+<div class="card text-center  card-tiles " *ngIf=favoriteSongResponse>
     <div class="card-body">
         <div class="d-flex flex-row bd-highlight ">
-            <img src="https://i.scdn.co/image/ac5cb571c194ca5a942b8096618217839b901a76" class="img-fluid" alt="">
+            <img [src]=favoriteSongResponse.image class="img-fluid" alt="">
             <div class="d-flex flex-column bd-highlight ">
                 <h4 class="px-2">Most Listened To Song</h4>
-                <p id="song-title">Heartless</p>
-                <p id="song-album">808s & Heartbreak</p>
+                <p id="song-title">{{favoriteSongResponse.name}}</p>
+                <p id="song-album">{{favoriteSongResponse.album}}</p>
             </div>
 
         </div>
