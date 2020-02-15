@@ -1,67 +1,24 @@
-<div class="card text-center list-components mx-auto ">
+<div class="card text-center list-components mx-auto " *ngIf=topSongsResponse>
     <div class="card-body p-0">
         <h1 class="list-titles">Most Listned To Songs</h1>
         <!-- <ul class="playlist"> -->
 
 
-        <div class="row mt-2 mr-0">
+        <div class="row mt-2 mr-0" *ngFor='let song of topSongsResponse'>
             <div class="col-md-3 col-style ml-1  pr-0">
-                <img src="https://i.scdn.co/image/ab67616d000048512fbd77033247e889cb7d2ac4" class="img-fluid" alt=""
-                    id="artist-image">
+                <img [src]=song.image class="img-fluid" alt="" id="artist-image">
             </div>
             <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
 
-                <p class="mb-0 mt-1 text-left pl-2">Otra Noche En Miami</p>
+                <p class="mb-0 mt-1 text-left pl-2">{{song.name}}</p>
             </div>
             <div class="col-md-3 col-style px-0">
-                <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">2:30</p>
+                <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">{{song.duration}}</p>
 
             </div>
         </div>
 
-        <div class="row mt-2 mr-0">
-            <div class="col-md-3 col-style ml-1  pr-0">
-                <img src="https://i.scdn.co/image/ab67616d000048513a5efcce5b31f018800d7f01" class="img-fluid" alt=""
-                    id="artist-image">
-            </div>
-            <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
 
-                <p class="mb-0 mt-1 text-left pl-2">Suena Mamal***</p>
-            </div>
-            <div class="col-md-3 col-style px-0">
-                <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">2:30</p>
-
-            </div>
-        </div>
-
-        <div class="row mt-2 mr-0">
-            <div class="col-md-3 col-style ml-1  pr-0">
-                <img src="https://i.scdn.co/image/1c701d45be4de13d9f89c4ce7a24d33f984c1fc4" class="img-fluid" alt=""
-                    id="artist-image">
-            </div>
-            <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
-
-                <p class="mb-0 mt-1 text-left pl-2">Soy El Diablo - Remix</p>
-            </div>
-            <div class="col-md-3 col-style px-0">
-                <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">2:30</p>
-
-            </div>
-        </div>
-        <div class="row mt-2 mr-0">
-            <div class="col-md-3 col-style ml-1  pr-0">
-                <img src="https://i.scdn.co/image/1c701d45be4de13d9f89c4ce7a24d33f984c1fc4" class="img-fluid" alt=""
-                    id="artist-image">
-            </div>
-            <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
-
-                <p class="mb-0 mt-1 text-left pl-2">Soy El Diablo - Remix</p>
-            </div>
-            <div class="col-md-3 col-style px-0">
-                <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">2:30</p>
-
-            </div>
-        </div>
 
 
 

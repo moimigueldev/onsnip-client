@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { urlRoutes } from '../../../assets/keys';
 import { GenreList } from '../../share/interfaces/genreList'
 import { TracksBundle, FavoriteTrack } from '../../share/interfaces/tracks';
-import { ArtistList } from '../../share/interfaces/list';
+import { ArtistList, TopSongs } from '../../share/interfaces/list';
 
 
 
@@ -24,10 +24,11 @@ export class SpotifyService implements OnDestroy, OnInit {
   getSavedUserSubscription: Subscription;
 
   //Subjects
-  favoriteSong = new Subject();
+  favoriteSong = new Subject<TopSongs>();
   genres = new Subject<GenreList[]>();
   tracksBundle = new Subject<TracksBundle>();
-  ArtistFollowing = new Subject();
+  ArtistFollowing = new Subject<ArtistList>();
+  topSongs = new Subject<TopSongs>();
 
 
 
@@ -69,12 +70,14 @@ export class SpotifyService implements OnDestroy, OnInit {
     cookie = JSON.parse(cookie)
     this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe((data: any) => {
 
-      // console.log('data', data['analytics'].artistFollowing)
+
+      console.log('data', data['analytics'].topTracks)
 
 
-      this.favoriteSong.next(this.bundleFavoriteTrack(data))
+      this.favoriteSong.next(data['analytics'].topTracks[0])
       this.tracksBundle.next(this.bundleUpTracks(data))
       this.ArtistFollowing.next(data['analytics'].artistFollowing)
+      this.topSongs.next(data['analytics'].topTracks)
       this.genres.next(data['analytics'].topGenres)
     })
 
@@ -83,16 +86,7 @@ export class SpotifyService implements OnDestroy, OnInit {
 
 
 
-  private bundleFavoriteTrack(track: any): FavoriteTrack {
 
-    const song: FavoriteTrack = {
-      name: track['analytics'].topTracks[0].name,
-      image: track['analytics'].topTracks[0].album.images[track['analytics'].topTracks[0].album.images.length - 1].url,
-      album: track['analytics'].topTracks[0].album.name
-    }
-
-    return song
-  }
 
 
   private bundleUpTracks(data: any): TracksBundle {
