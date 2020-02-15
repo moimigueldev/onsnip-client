@@ -7,6 +7,7 @@ import { GenreComponent } from './genre/genre.component';
 import { ArtistComponent } from './artist/artist.component';
 import { TotalSongsComponent } from './total-songs/total-songs.component';
 import { ShareModule } from 'src/app/share/share.module';
+import { GeneralTracksComponent } from './general-tracks/general-tracks.component';
 
 
 
@@ -17,7 +18,8 @@ import { ShareModule } from 'src/app/share/share.module';
     LastYearComponent,
     GenreComponent,
     ArtistComponent,
-    TotalSongsComponent
+    TotalSongsComponent,
+    GeneralTracksComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { ShareModule } from 'src/app/share/share.module';
     LastYearComponent,
     GenreComponent,
     ArtistComponent,
-    TotalSongsComponent
+    TotalSongsComponent,
+    GeneralTracksComponent
   ]
 })
 export class TilesModule { }

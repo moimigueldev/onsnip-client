@@ -3,15 +3,17 @@ import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-last-year',
-  templateUrl: './last-year.component.html',
-  styleUrls: ['./last-year.component.scss']
+  selector: 'app-general-tracks',
+  templateUrl: './general-tracks.component.html',
+  styleUrls: ['./general-tracks.component.scss']
 })
-export class LastYearComponent implements OnInit {
+export class GeneralTracksComponent implements OnInit {
 
-  @Input() bankName: number;
+  @Input() tracks: number;
+  @Input() name: number;
+  @Input() bgColor: string;
 
-  tracks: number;
+  // tracks: number;
 
   tracksSubscription: Subscription;
 
@@ -24,12 +26,11 @@ export class LastYearComponent implements OnInit {
       this.tracks = track
     })
 
-    // console.log('trackss', this.bankName)
+    console.log('trackss', this.tracks, this.name, this.bgColor)
   }
 
 
   ngOnDestroy() {
     this.tracksSubscription ? this.tracksSubscription.unsubscribe() : null
   }
-
 }

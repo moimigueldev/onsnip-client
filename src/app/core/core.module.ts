@@ -11,13 +11,15 @@ import { ShareModule } from '../share/share.module';
 
 
 
+
 @NgModule({
   declarations: [
     NavbarComponent,
     WelcomeComponent,
     RedirectComponent,
     DashboardComponent,
-    BarGraphComponent
+    BarGraphComponent,
+
   ],
   imports: [
     CommonModule,

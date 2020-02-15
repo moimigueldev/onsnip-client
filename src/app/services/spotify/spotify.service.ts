@@ -4,7 +4,8 @@ import { Subscription, Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { urlRoutes } from '../../../assets/keys';
-import { map } from 'rxjs/operators'
+import { GenreList } from '../../share/interfaces/genreList'
+import { TracksBundle } from 'src/app/share/interfaces/tracks';
 
 
 @Injectable({
@@ -20,7 +21,12 @@ export class SpotifyService {
 
   //Subjects
   topArtist = new Subject();
-  genres = new Subject();
+  genres = new Subject<GenreList[]>();
+  tracksSavedThisMonth = new Subject<number>();
+  tracksSavedthisYear = new Subject<number>();
+  tracksSavedLastYear = new Subject<number>();
+  totalSongs = new Subject<number>();
+  tracksBundle = new Subject<TracksBundle>();
 
   constructor(
     private http: HttpClient,
@@ -56,11 +62,27 @@ export class SpotifyService {
   getSavedUser(): void {
     let cookie = this.cookieService.get('spotify-user')
 
-
     cookie = JSON.parse(cookie)
     this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe(data => {
-      console.log('data', data)
+      // console.log('data', data['filteredData'].tracksSavedlastYear)
       // this.topArtist.next(data['filteredData'].mostListenedArtist)
+
+      const tracksBundle: TracksBundle = {
+        tracksSavedLastYear: data['filteredData'].tracksSavedlastYear,
+        tracksSavedThisYear: data['filteredData'].tracksSavedThisYear,
+        tracksSavedThisMonth: data['filteredData'].tracksSavedThisMonth,
+        TotalTracks: data['analytics'].totalSongs,
+      }
+
+      this.tracksBundle.next(tracksBundle)
+
+
+
+      this.tracksSavedLastYear.next(data['filteredData'].tracksSavedlastYear)
+
+      this.tracksSavedThisMonth.next(data['filteredData'].tracksSavedThisMonth)
+      this.tracksSavedthisYear.next(data['filteredData'].tracksSavedthisYear)
+      this.totalSongs.next(data['analytics'].totalSongs)
       this.genres.next(data['analytics'].topGenres)
     })
 
