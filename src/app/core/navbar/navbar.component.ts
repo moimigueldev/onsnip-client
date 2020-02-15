@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StyleService } from 'src/app/services/style/style.service';
+import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,8 @@ import { StyleService } from 'src/app/services/style/style.service';
 export class NavbarComponent implements OnInit {
 
   constructor(
-    private styleService: StyleService
+    private styleService: StyleService,
+    private SpotifyService: SpotifyService
   ) { }
 
   ngOnInit(): void {
@@ -19,6 +21,7 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     console.log('login out')
+    this.SpotifyService.logoutUser();
   }
 
   ngOnDestroy(): void {
