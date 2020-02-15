@@ -29,9 +29,9 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.spotifyService.favoriteSong.subscribe((track: FavoriteTrack) => {
+    this.FavoriteSongSubscription = this.spotifyService.favoriteSong.subscribe((track: FavoriteTrack) => {
       this.favoriteSongResponse = track;
-      console.log('track', this.favoriteSongResponse)
+
     })
   }
 
