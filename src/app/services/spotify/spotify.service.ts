@@ -6,7 +6,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { urlRoutes } from '../../../assets/keys';
 import { GenreList } from '../../share/interfaces/genreList'
 import { TracksBundle, FavoriteTrack } from '../../share/interfaces/tracks';
-import { ArtistList, TopSongs } from '../../share/interfaces/list';
+import { ArtistList, TopSongs, Playlist } from '../../share/interfaces/list';
 
 
 
@@ -30,7 +30,7 @@ export class SpotifyService implements OnDestroy, OnInit {
   ArtistFollowing = new Subject<ArtistList>();
   topSongs = new Subject<TopSongs>();
   topArtist = new Subject<ArtistList>();
-  playlistFollowing = new Subject();
+  playlistFollowing = new Subject<Playlist>();
 
 
 
@@ -67,13 +67,13 @@ export class SpotifyService implements OnDestroy, OnInit {
 
   // THIS ONE
   getSavedUser(): void {
-    let cookie = this.cookieService.get('spotify-user')
+    const cookie = JSON.parse(this.cookieService.get('spotify-user'))
 
-    cookie = JSON.parse(cookie)
+
     this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe((data: any) => {
 
 
-      console.log('data', data['analytics'])
+      // console.log('data', data['analytics'])
 
       this.playlistFollowing.next(data['analytics'].playlist)
       this.topArtist.next(data['analytics'].topArtist)

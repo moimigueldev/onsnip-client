@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { SpotifyService } from 'src/app/services/spotify/spotify.service';
+import { Playlist } from 'src/app/share/interfaces/list';
 
 @Component({
   selector: 'app-playlist',
@@ -20,16 +21,16 @@ export class PlaylistComponent implements OnInit {
   //====================================
   //              GLOBALS
   //====================================
-  playlistFollowingResponse;
+  playlistFollowingResponse: Playlist;
 
   constructor(
     private spotifyService: SpotifyService
   ) { }
 
   ngOnInit(): void {
-    this.playlistFollowingSubscription = this.spotifyService.playlistFollowing.subscribe(pl => {
+    this.playlistFollowingSubscription = this.spotifyService.playlistFollowing.subscribe((pl: Playlist) => {
       this.playlistFollowingResponse = pl;
-      console.log('playlist', pl)
+
     })
   }
 

@@ -11,3 +11,9 @@ export interface TopSongs {
     duration: string,
     album: string
 }
+
+export interface Playlist {
+    name: string;
+    image: string;
+    total: number
+}
