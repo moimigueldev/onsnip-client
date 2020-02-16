@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 
 @Component({
   selector: 'app-playlist',
@@ -7,9 +9,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistComponent implements OnInit {
 
-  constructor() { }
+  //====================================
+  //              Subscriptions
+  //====================================
 
-  ngOnInit() {
+  playlistFollowingSubscription: Subscription;
+
+
+
+  //====================================
+  //              GLOBALS
+  //====================================
+  playlistFollowingResponse;
+
+  constructor(
+    private spotifyService: SpotifyService
+  ) { }
+
+  ngOnInit(): void {
+    this.playlistFollowingSubscription = this.spotifyService.playlistFollowing.subscribe(pl => {
+      this.playlistFollowingResponse = pl;
+      console.log('playlist', pl)
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.playlistFollowingSubscription ? this.playlistFollowingSubscription.unsubscribe() : null
   }
 
 }

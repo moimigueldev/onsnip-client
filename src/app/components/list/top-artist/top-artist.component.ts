@@ -21,14 +21,14 @@ export class TopArtistComponent implements OnInit {
   //====================================
   //              GLOBALS
   //====================================
-  FavoriteArtistResponse;
+  FavoriteArtistResponse: ArtistList;
 
   constructor(
     private spotifyService: SpotifyService
   ) { }
 
   ngOnInit() {
-    this.FavoriteArtistSubscription = this.spotifyService.topArtist.subscribe(artist => {
+    this.FavoriteArtistSubscription = this.spotifyService.topArtist.subscribe((artist: ArtistList) => {
       this.FavoriteArtistResponse = artist;
     })
   }
