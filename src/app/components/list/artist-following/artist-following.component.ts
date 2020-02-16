@@ -30,6 +30,7 @@ export class ArtistFollowingComponent implements OnInit {
   ngOnInit() {
     this.ArtistSubscriptions = this.spotifyService.ArtistFollowing.subscribe((artist: ArtistList) => {
       this.artistResponse = artist;
+      console.log('artist', this.artistResponse)
     })
   }
 
