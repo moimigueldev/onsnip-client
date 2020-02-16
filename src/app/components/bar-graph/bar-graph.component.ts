@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SpotifyService } from 'src/app/services/spotify/spotify.service';
 import { Subscription } from 'rxjs';
 import { GenreList } from 'src/app/share/interfaces/genreList';
@@ -14,7 +14,15 @@ import { Label, MultiDataSet } from 'ng2-charts';
 
 
 
+
 export class BarGraphComponent implements OnInit {
+
+  @ViewChild('canvas', { static: true })
+  canvas: ElementRef<HTMLCanvasElement>;
+  ctx: CanvasRenderingContext2D;
+  ngAfterViewInit() {
+
+  }
 
   colorPallet: string[] = ['#FF5733', '#FFBD33', '#DBFF33', '#75FF33', '#33FF57', '#33FFBD', '#FF5733', '#FFBD33', '#DBFF33', '#75FF33'];
 
@@ -29,16 +37,17 @@ export class BarGraphComponent implements OnInit {
 
   public barChartOptions: ChartOptions = {
     responsive: true,
-    // scales: {
-    //   yAxes: [{
-    //     display: true,
-    //     ticks: {
+    scales: {
+      yAxes: [{
+        display: true,
+        ticks: {
 
-    //       fontSize: 10,
-    //       lineHeight: 0
-    //     }
-    //   }]
-    // },
+          fontSize: 10,
+          lineHeight: 0,
+          fontColor: '#0D5FDF'
+        }
+      }]
+    },
 
     // tooltips: {
     //   callbacks: {
@@ -50,18 +59,12 @@ export class BarGraphComponent implements OnInit {
     //   titleFontSize: 12
     // }
 
-    // tooltips: {
-    //   callbacks: {
-    //     label: (tooltipItem, data) => {
-
-    //       console.log(tooltipItem)
-    //       return data
-    //       // return tooltipItem.xLabel = this.artistData[tooltipItem.index].artist
-
-
-    //     }
-    //   }
-    // }
+    tooltips: {
+      titleFontSize: 10,
+      callbacks: {
+        label: (tooltip, data) => ""
+      }
+    }
 
   };
 
@@ -79,7 +82,11 @@ export class BarGraphComponent implements OnInit {
   ngOnInit(): void {
     this.genresSubscription = this.spotifyService.genres.subscribe((list: GenreList[]) => {
       this.filterGenres(list)
+
+      console.log('ctx')
     });
+    // var chart = document.getElementById('chart').getContext('2d'),
+    //   gradient = chart.createLinearGradient(0, 0, 0, 450);
   }
 
   filterGenres(list: GenreList[]): void {
@@ -88,21 +95,33 @@ export class BarGraphComponent implements OnInit {
     const genresName = genres.map(el => el.name)
     const genresTotal = genres.map(el => el.total)
 
+    //     background: rgb(46,20,132);
+    // background: linear-gradient(90deg, rgba(46,20,132,1) 43%, rgba(74,175,0,1) 95%);
 
 
+    this.ctx = this.canvas.nativeElement.getContext('2d');
+    var gradient = this.ctx.createLinearGradient(46, 20, 132, 200);
+
+    // gradient.addColorStop(0, 'blue');
+    // gradient.addColorStop(1, 'white');
+    // gradient.addColorStop(0.9)
+    gradient.addColorStop(0.4, 'rgba(46,20,132,1)')
+    gradient.addColorStop(0.9, 'rgba(74,175,0,1)')
 
 
     this.barChartData = [{
       data: genresTotal,
       pointBackgroundColor: this.colorPallet,
-      backgroundColor: 'rgb(46,20,132)',
+
+      backgroundColor: gradient,
       pointRadius: 7,
       // borderWidth: 3,
-      barPercentage: 0.4,
+      barPercentage: 0.6,
 
-      fill: false
+      fill: true
     }]
     this.barChartLabels = genresName;
+
 
 
 
