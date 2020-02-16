@@ -29,6 +29,7 @@ export class SpotifyService implements OnDestroy, OnInit {
   tracksBundle = new Subject<TracksBundle>();
   ArtistFollowing = new Subject<ArtistList>();
   topSongs = new Subject<TopSongs>();
+  topArtist = new Subject<ArtistList>();
 
 
 
@@ -71,9 +72,10 @@ export class SpotifyService implements OnDestroy, OnInit {
     this.getSavedUserSubscription = this.http.post(urlRoutes['authSavedUser'], { cookie }).subscribe((data: any) => {
 
 
-      console.log('data', data['analytics'].topTracks)
+      console.log('data', data['analytics'])
 
 
+      this.topArtist.next(data['analytics'].topArtist)
       this.favoriteSong.next(data['analytics'].topTracks[0])
       this.tracksBundle.next(this.bundleUpTracks(data))
       this.ArtistFollowing.next(data['analytics'].artistFollowing)

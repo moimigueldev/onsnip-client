@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SpotifyService } from 'src/app/services/spotify/spotify.service';
+import { Subscription } from 'rxjs';
+import { ArtistList } from 'src/app/share/interfaces/list';
 
 @Component({
   selector: 'app-top-artist',
@@ -7,9 +10,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopArtistComponent implements OnInit {
 
-  constructor() { }
+  //====================================
+  //              Subscriptions
+  //====================================
+
+  FavoriteArtistSubscription: Subscription;
+
+
+
+  //====================================
+  //              GLOBALS
+  //====================================
+  FavoriteArtistResponse;
+
+  constructor(
+    private spotifyService: SpotifyService
+  ) { }
 
   ngOnInit() {
+    this.FavoriteArtistSubscription = this.spotifyService.topArtist.subscribe(artist => {
+      this.FavoriteArtistResponse = artist;
+    })
+  }
+
+  ngOnDestroy(): void {
+    this.FavoriteArtistSubscription ? this.FavoriteArtistSubscription.unsubscribe() : null;
   }
 
 }
