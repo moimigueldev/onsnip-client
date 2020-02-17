@@ -49,15 +49,7 @@ export class BarGraphComponent implements OnInit {
       }]
     },
 
-    // tooltips: {
-    //   callbacks: {
-    //     label: (tooltipItem, data) => {
 
-    //       return ''
-    //     }
-    //   },
-    //   titleFontSize: 12
-    // }
 
     tooltips: {
       titleFontSize: 10,
