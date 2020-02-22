@@ -4,9 +4,33 @@
         <!-- <ul class="playlist"> -->
 
 
-        <div class="row mt-2 mr-0" *ngFor='let artist of FavoriteArtistResponse'>
+        <!-- <div class="row mt-2 mr-0" *ngFor='let artist of FavoriteArtistResponse'>
             <div class="col-md-5 col-style ml-1  pr-0">
                 <img [src]=artist.image class="img-fluid" alt="" id="artist-image">
+            </div>
+            <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
+
+                <p class="mb-0 mt-1 text-left pl-2">{{artist.name}}</p>
+            </div>
+
+        </div> -->
+
+        <div class="row mt-2 mr-0 d-md-flex d-none web" *ngFor='let artist of FavoriteArtistResponse'>
+            <div class="col-md-5 col-style ml-1  pr-0">
+                <img [src]=artist.image class="img-fluid" alt="" id="artist-image">
+            </div>
+            <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
+
+                <p class="mb-0 mt-1 text-left pl-2">{{artist.name}}</p>
+            </div>
+
+        </div>
+
+        <!-- MOBILE -->
+
+        <div class="d-flex flex-row mr-md-0 d-md-none mt-2 mobile" *ngFor='let artist of FavoriteArtistResponse'>
+            <div class="col-md-5 col-style ml-1  pr-0">
+                <img [src]=artist.image class="img-fluid" alt="" id="artist-image-mobile">
             </div>
             <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
 

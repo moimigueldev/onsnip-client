@@ -87,14 +87,11 @@
     }
   }
 
-  .row:hover {
-    background-color: #001329;
-  }
-
   .row {
     overflow-x: hidden;
   }
 }
 
-.mobile {
+.row:hover {
+  background-color: #001329;
 }
