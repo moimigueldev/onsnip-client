@@ -46,6 +46,10 @@ export class BarGraphComponent implements OnInit {
           lineHeight: 0,
           fontColor: '#0D5FDF'
         }
+      }],
+      xAxes: [{
+        display: true,
+
       }]
     },
 
