@@ -26,11 +26,11 @@ export class NavbarComponent implements OnInit {
 
 
   logout(): void {
-    console.log('login out')
-    // this.SpotifyService.logoutUser();
+
+    this.SpotifyService.logoutUser();
   }
 
   ngOnDestroy(): void {
-    this.styleService.clearClassList();
+
   }
 }

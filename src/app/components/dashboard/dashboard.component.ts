@@ -62,6 +62,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.tracksBundleSubscription ? this.tracksBundleSubscription.unsubscribe() : null;
     this.finishedLoadingSubscription ? this.finishedLoadingSubscription.unsubscribe() : null;
+    this.styleService.clearClassList();
   }
 
 } 
