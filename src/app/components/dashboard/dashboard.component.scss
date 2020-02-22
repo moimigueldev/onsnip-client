@@ -1,39 +1,62 @@
 #bar-graph {
-    // border: 1px solid red;
-    height: 452px;
-    background-color: #041d39;
+  // border: 1px solid red;
+  height: 452px;
+  background-color: #041d39;
 }
-
 
 #list-section {
-    // background-color: #041d39;  
-    // border: 1px solid red;
+  // background-color: #041d39;
+  // border: 1px solid red;
 
-    // .col-md-6  {
-    //     background-color: #041d39;
-    //     overflow: scroll
-    // }
+  // .col-md-6  {
+  //     background-color: #041d39;
+  //     overflow: scroll
+  // }
 
-    .row {
-        // border: 2px solid blue;
-        min-height: 50%;
-        max-height: 50% !important;
-        overflow: hidden;
-        scrollbar-width: none;
-
-  
-        
-    }
+  .row {
+    // border: 2px solid blue;
+    min-height: 50%;
+    max-height: 50% !important;
+    overflow: hidden;
+    scrollbar-width: none;
+  }
 }
-
 
 .list-columns {
-    // color: yellow;
-    height: 220px   ;
-    // max-height: 220px   ;
-    overflow: scroll;
-    scrollbar-width: none;
-    padding: 0;
-    background-color: #041d39
+  // color: yellow;
+  height: 220px;
+  // max-height: 220px   ;
+  overflow: scroll;
+  scrollbar-width: none;
+  padding: 0;
+  background-color: #041d39;
 }
 
+//======================================================================
+//                        LOADER
+//======================================================================
+
+.loader {
+  margin-top: 30%;
+}
+
+.spinner-grow {
+  width: 4rem;
+  height: 4rem;
+}
+
+//======================================================================
+//                        MEDIA QUERY
+//======================================================================
+
+//IPHONE X
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
+  .loader {
+    margin-top: 74%;
+  }
+
+  .spinner-grow {
+    width: 2rem;
+    height: 2rem;
+  }
+}

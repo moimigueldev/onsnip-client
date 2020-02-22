@@ -1,66 +1,57 @@
-
-
-
-
 //===================================================
-//            INDIVIDUAL COMPONENTS BACKGROUND 
+//            INDIVIDUAL COMPONENTS BACKGROUND
 //===================================================
 .dashboard-bg {
-  background-color:rgb(8, 37, 67);
-  color: white;;
+  background-color: rgb(8, 37, 67);
+  color: white;
 }
 
-
 .welcome-bg-image {
-    background: url(./assets/welcome-page/bg-3.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-  } 
-  
-  
-  .redirect-page {
-    background-color:rgb(231, 231, 231);
-  }
-  
-  .login-bg-image {
-    background: url(./assets/welcome-page/bg-2.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-  } 
+  background: url(./assets/welcome-page/bg-3.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
 
-  
+.redirect-page {
+  background-color: rgb(231, 231, 231);
+}
+
+.login-bg-image {
+  background: url(./assets/welcome-page/bg-2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 // .dropdown-menu.show {
 //   background-color: 'red' !important
 // }
 
 //===================================================
-//            GLOBAL CARD TILES 
+//            GLOBAL CARD TILES
 //===================================================
-
 
 .card-tiles {
   overflow: hidden;
-    // background: rgb(52, 185, 123);  /* fallback for old browsers */
- 
-    width: 99%;
-    height: 120px;
-    // border-radius: 10px;
+  // background: rgb(52, 185, 123);  /* fallback for old browsers */
 
-    // margin-top:  ;
+  width: 99%;
+  height: 120px;
+  // border-radius: 10px;
+
+  // margin-top:  ;
 }
 
 .card-tile-text {
-  font-size: 18px
+  font-size: 18px;
 }
 
 //===================================================
-//            LIST 
+//            LIST
 //===================================================
-
 
 .list-components {
   width: 260px;
@@ -73,46 +64,35 @@
   font-weight: 400;
 }
 
-
 //===================================================
-//            HIDES THE SCROLLBAR 
+//            HIDES THE SCROLLBAR
 //===================================================
-
-
 
 // HIDES THE SCROLL BAR
 ::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
-  
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 // HIDES THE SCROLL BAR
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
-  width: 0px;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
-  background: #FF0000;
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+  background: #ff0000;
 }
 
 //===================================================
-//            MEDIA QUERIES 
+//            MEDIA QUERIES
 //===================================================
-  
-// IPHONE 
-@media only screen 
-and (min-device-width : 375px) 
-and (max-device-width : 812px) 
-and (-webkit-device-pixel-ratio : 3)
-and (orientation : portrait)
- {
-//===================================================
-//            GLOBAL CARD TILES 
-//===================================================
+
+// IPHONE
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+  //===================================================
+  //            GLOBAL CARD TILES
+  //===================================================
 
   .card-tiles {
-    margin-top: 10px  ;
+    margin-top: 10px;
   }
 }
-
-

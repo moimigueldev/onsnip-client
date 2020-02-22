@@ -31,6 +31,7 @@ export class SpotifyService implements OnDestroy, OnInit {
   topSongs = new Subject<TopSongs>();
   topArtist = new Subject<ArtistList>();
   playlistFollowing = new Subject<Playlist>();
+  finishedLoading = new Subject<Boolean>();
 
 
 
@@ -82,6 +83,8 @@ export class SpotifyService implements OnDestroy, OnInit {
       this.ArtistFollowing.next(data['analytics'].artistFollowing)
       this.topSongs.next(data['analytics'].topTracks)
       this.genres.next(data['analytics'].topGenres)
+
+      this.finishedLoading.next(true);
     })
 
 

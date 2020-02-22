@@ -1,80 +1,115 @@
-<!-- <p>dashboard works!</p>
-<button (click)="logout()">Logout</button> -->
-<app-navbar></app-navbar>
+<div class="container" *ngIf="!finishedLoading">
+    <div class="row ">
+        <div class="col-md-12 col-centered text-center loader">
 
-<div class="container  mt-3 mb-0">
-    <div class="row no-gutters  ">
-        <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
-            <!-- <app-last-year ></app-last-year> -->
 
-            <app-general-tracks tracks={{tracksBundleResponse.tracksSavedLastYear}} name="Songs Added Last Year"
-                bgColor='#ff625b'>
-            </app-general-tracks>
-        </div>
-        <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
-            <!-- <app-this-year></app-this-year> -->
-            <app-general-tracks tracks={{tracksBundleResponse.tracksSavedThisYear}} name="Songs Added This Year"
-                bgColor='#7965f1'>
-            </app-general-tracks>
-        </div>
-        <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
-            <!-- <app-this-month></app-this-month> -->
-            <app-general-tracks tracks={{tracksBundleResponse.tracksSavedThisMonth}} name="Songs Added This Month"
-                bgColor='#ffbf45'>
-            </app-general-tracks>
-        </div>
 
-    </div>
-</div>
-<div class="container  mt-2">
-    <div class="row no-gutters  mt-0">
-        <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
-            <!-- <app-genre></app-genre> -->
-            <app-general-tracks tracks={{tracksBundleResponse.favoriteGenre.name.toUpperCase()}} name="Favorite Genre"
-                bgColor='#58b5fc'>
-            </app-general-tracks>
-        </div>
-        <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
-            <!-- <app-total-songs></app-total-songs> -->
-            <app-general-tracks tracks={{tracksBundleResponse.totalTracks}} name="Total Songs In Queue"
-                bgColor='#61d861'>
-            </app-general-tracks>
-        </div>
-        <div class="col-md-4  p-0tiles-row ">
-            <app-artist></app-artist>
-        </div>
 
+            <div class="spinner-grow text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-success" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-warning" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-info" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-secondary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            <div class="spinner-grow text-dark" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+
+            <h5 class="mt-3">Creating your Dashboard</h5>
+
+        </div>
     </div>
 </div>
 
 
+<div class="m-0 p-0" [ngClass]="display">
+    <app-navbar></app-navbar>
 
-<div class="container mt-5">
-    <div class="row">
+    <div class="container  mt-3 mb-0">
+        <div class="row no-gutters  ">
+            <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
 
-        <div class="col-md-6 px-0" id="bar-graph">
-            <app-bar-graph></app-bar-graph>
+
+                <app-general-tracks tracks={{tracksBundleResponse.tracksSavedLastYear}} name="Songs Added Last Year"
+                    bgColor='#ff625b'>
+                </app-general-tracks>
+            </div>
+            <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
+                <app-general-tracks tracks={{tracksBundleResponse.tracksSavedThisYear}} name="Songs Added This Year"
+                    bgColor='#7965f1'>
+                </app-general-tracks>
+            </div>
+            <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
+                <app-general-tracks tracks={{tracksBundleResponse.tracksSavedThisMonth}} name="Songs Added This Month"
+                    bgColor='#ffbf45'>
+                </app-general-tracks>
+            </div>
+
         </div>
+    </div>
+    <div class="container  mt-2">
+        <div class="row no-gutters  mt-0">
+            <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
+                <app-general-tracks tracks={{tracksBundleResponse.favoriteGenre.name.toUpperCase()}}
+                    name="Favorite Genre" bgColor='#58b5fc'>
+                </app-general-tracks>
+            </div>
+            <div class="col-md-4  p-0tiles-row " *ngIf=tracksBundleResponse>
+                <app-general-tracks tracks={{tracksBundleResponse.totalTracks}} name="Total Songs In Queue"
+                    bgColor='#61d861'>
+                </app-general-tracks>
+            </div>
+            <div class="col-md-4  p-0tiles-row ">
+                <app-artist></app-artist>
+            </div>
+
+        </div>
+    </div>
 
 
-        <div class="col-md-6" id="list-section">
-            <div class="row">
-                <div class="col-md-6 list-columns" id="test">
-                    <app-artist-following class=" components"></app-artist-following>
+
+    <div class="container mt-5 ">
+        <div class="row">
+
+            <div class="col-md-6 px-0" id="bar-graph">
+                <app-bar-graph></app-bar-graph>
+            </div>
+
+
+            <div class="col-md-6" id="list-section">
+                <div class="row">
+                    <div class="col-md-6 list-columns" id="test">
+                        <app-artist-following class=" components"></app-artist-following>
+                    </div>
+                    <div class="col-md-6 list-columns">
+                        <app-top-songs class="components"></app-top-songs>
+                    </div>
                 </div>
-                <div class="col-md-6 list-columns">
-                    <app-top-songs class="components"></app-top-songs>
+                <div class="row">
+                    <div class="col-md-6 list-columns">
+                        <app-top-artist class="mr-auto components"></app-top-artist>
+                    </div>
+                    <div class="col-md-6 list-columns">
+                        <app-playlist class=" components"></app-playlist>
+                    </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 list-columns">
-                    <app-top-artist class="mr-auto components"></app-top-artist>
-                </div>
-                <div class="col-md-6 list-columns">
-                    <app-playlist class=" components"></app-playlist>
-                </div>
-            </div>
-        </div>
 
+        </div>
     </div>
 </div>

@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     const cookie = JSON.parse(this.cookieService.get('spotify-user'));
     this.welcome = cookie.id
-    this.styleService.addDashboardPageClass();
+
   }
 
 
