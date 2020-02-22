@@ -74,7 +74,9 @@
 }
 
 
-
+//===================================================
+//            HIDES THE SCROLLBAR 
+//===================================================
 
 
 
@@ -88,6 +90,8 @@
 // HIDES THE SCROLL BAR
 /* Optional: show position indicator in red */
 ::-webkit-scrollbar-thumb {
+  width: 0px;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
   background: #FF0000;
 }
 
