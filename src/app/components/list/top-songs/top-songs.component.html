@@ -4,7 +4,7 @@
         <!-- <ul class="playlist"> -->
 
 
-        <div class="row mt-2 mr-0" *ngFor='let song of topSongsResponse'>
+        <!-- <div class="row mt-2 mr-0" *ngFor='let song of topSongsResponse'>
             <div class="col-md-3 col-style ml-1  pr-0">
                 <img [src]=song.image class="img-fluid" alt="" id="artist-image">
             </div>
@@ -13,6 +13,36 @@
                 <p class="mb-0 mt-1 text-left pl-2">{{song.name}}</p>
             </div>
             <div class="col-md-3 col-style px-0">
+                <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">{{song.duration}}</p>
+
+            </div>
+        </div> -->
+
+        <div class="row mt-2 mr-0 d-md-flex d-none web" *ngFor='let song of topSongsResponse'>
+            <div class="col-md-3 col-style ml-1  pr-0">
+                <img [src]=song.image class="img-fluid" alt="" id="artist-image">
+            </div>
+            <div class="col-md-5 p-0 col-stylen ml-0 justify-content-end" id="song-title">
+
+                <p class="mb-0 mt-1 text-left pl-2">{{song.name}}</p>
+            </div>
+            <div class="col-md-3 col-style px-0">
+                <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">{{song.duration}}</p>
+
+            </div>
+        </div>
+
+        <!-- MOBILE -->
+
+        <div class="d-flex flex-row d-md-none d-md-none mt-2 mobile " *ngFor='let song of topSongsResponse'>
+
+            <img [src]=song.image class="img-fluid" alt="" id="artist-image">
+
+            <div class="col-md-5 p-0  ml-0 justify-content-end" id="song-title">
+
+                <p class="mb-0 mt-1 text-left pl-2">{{song.name}}</p>
+            </div>
+            <div class="col-md-3 px-0  pr-3">
                 <p class="mb-0 followers mt-2 text-right" style="color: #4791ff">{{song.duration}}</p>
 
             </div>
