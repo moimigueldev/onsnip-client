@@ -24,6 +24,11 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  onGenres() {
+    console.log('click', window.location.hash)
+    window.location.hash = '#bar-graph'
+  }
+
 
   logout(): void {
 
